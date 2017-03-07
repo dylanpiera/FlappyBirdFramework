@@ -11,6 +11,7 @@ namespace FlappyBird
         private Bird bird;
         private GameObjectList pipes;
         private int frameCount;
+        private Score score;
 
         public GameObjectList Pipes
         {
@@ -42,35 +43,40 @@ namespace FlappyBird
         {
             bird = new Bird();
             pipes = new GameObjectList();
+            score = new Score();
             frameCount = 0;
 
+            score.Position = new Vector2(300, 50);
 
 
             this.Add(new SpriteGameObject("spr_background"));
             this.Add(bird);
             this.Add(pipes);
+            this.Add(score);
         }
 
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
             bool isGameOver = false;
+            int pipeScoreCount = 0;
 
             if(((this.Bird.Position.Y > FlappyBird.Screen.Y) || (this.Bird.Position.Y < 0) || (this.Bird.Position.X < 0) || (this.Bird.Position.X > FlappyBird.Screen.X)))
             {
                 isGameOver = true;
             }
-            else
+            foreach (Pipe pipe in this.pipes.Objects)
             {
-                foreach (Pipe pipe in this.pipes.Objects)
+                if (pipe.Position.X < this.Bird.Position.X) pipeScoreCount++;
+
+                if (this.Bird.CollidesWith(pipe))
                 {
-                    if (this.Bird.CollidesWith(pipe))
-                    {
-                        isGameOver = true;
-                    }
+                    isGameOver = true;
                 }
             }
-
+            
+            
+            score.Text = "Score: " + pipeScoreCount;
 
             frameCount++;
 
