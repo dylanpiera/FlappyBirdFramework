@@ -16,6 +16,7 @@ namespace FlappyBird
     /// </summary>
     public class FlappyBird : GameEnvironment
     {
+        public const String playingState = "playingState";
         
         public FlappyBird()
         {            
@@ -28,11 +29,16 @@ namespace FlappyBird
         /// </summary>
         protected override void LoadContent()
         {
+            base.LoadContent();
+
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
             screen.X = 640;
             screen.Y = 480;
             SetFullScreen(false);
+
+            gameStateManager.AddGameState(playingState, new PlayingState());
+            gameStateManager.SwitchTo(playingState);
 
             // TODO: use this.Content to load your game content here
         }
