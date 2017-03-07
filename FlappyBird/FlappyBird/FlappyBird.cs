@@ -16,7 +16,7 @@ namespace FlappyBird
     /// </summary>
     public class FlappyBird : GameEnvironment
     {
-        public const String playingState = "playingState";
+        public const String playingState = "playingState", titleScreenState = "titleScreenState", gameOverState = "gameOverState";
         
         public FlappyBird()
         {            
@@ -38,7 +38,9 @@ namespace FlappyBird
             SetFullScreen(false);
 
             gameStateManager.AddGameState(playingState, new PlayingState());
-            gameStateManager.SwitchTo(playingState);
+            gameStateManager.AddGameState(titleScreenState, new TitleScreenState());
+            gameStateManager.AddGameState(gameOverState, new GameOverState());
+            gameStateManager.SwitchTo(titleScreenState);
 
             // TODO: use this.Content to load your game content here
         }

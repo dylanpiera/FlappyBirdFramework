@@ -73,6 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bird.cs" />
+    <Compile Include="GameOverState.cs" />
     <Compile Include="Pipe.cs" />
     <Compile Include="PlayingState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,6 +81,7 @@
     <Compile Include="FlappyBird.cs" />
     <Compile Include="RotatingSpriteGameObject.cs" />
     <Compile Include="Score.cs" />
+    <Compile Include="TitleScreenState.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

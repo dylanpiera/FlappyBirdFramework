@@ -94,6 +94,7 @@ namespace FlappyBird
             this.Pipes.Objects.Clear();
             this.frameCount = 0;
             this.bird.Reset();
+            FlappyBird.GameStateManager.SwitchTo(FlappyBird.gameOverState);
         }
     }
 }
